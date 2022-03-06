@@ -31,8 +31,12 @@ pipeline
                         withCredentials([string(credentialsId: 'docker', variable: 'docker-password')]) {
                                sh 'cat /home/ubuntu/my_password.txt | docker login --username riyansh16 --password-stdin'
                                sh 'docker push riyansh16/maven:$BUILD_NUMBER'
-}
                         }
+                }
+            }
+        }
+                
+                
         
     }
     
