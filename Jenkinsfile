@@ -24,13 +24,15 @@ pipeline
                 sh 'mvn package'
             }
         }
-        stage('ContinuousDeployment')
-        {
-            steps
-            {
-               deploy adapters: [tomcat9(credentialsId: 'tomcat9', path: '', url: 'http://13.233.247.23:8080')], contextPath: 'test1', war: '**/*.war'
-            }
-        }
+        stage('building docker image'){
+            steps{
+                script{
+                        sh 'docker build -t riyansh16/maven:$BUILD_NUMBER .'
+                        withCredentials([string(credentialsId: 'docker', variable: 'docker-password')]) {
+                               sh 'cat /home/ubuntu/my_password.txt | docker login --username riyansh16 --password-stdin'
+                               sh 'docker push riyansh16/maven:$BUILD_NUMBER'
+}
+                        }
         
     }
     
