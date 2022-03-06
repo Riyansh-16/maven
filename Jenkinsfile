@@ -10,6 +10,13 @@ pipeline
                 git 'https://github.com/Riyansh-16/maven.git'
             }
         }
+        stage('Code Analysis'){
+            steps{
+                withSonarQubeEnv('sonar8'){
+                   sh 'mvn sonar:sonar'
+                }
+            }
+        }
         stage('ContinuousBuild')
         {
             steps
