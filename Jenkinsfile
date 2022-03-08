@@ -10,21 +10,21 @@ pipeline
                 git 'https://github.com/Riyansh-16/maven.git'
             }
         }
-        stage('Code Analysis'){
-            steps{
-                withSonarQubeEnv('sonar8'){
-                   sh 'mvn sonar:sonar'
-                }
-            }
-        }
-        stage('ContinuousBuild')
-        {
-            steps
-            {
-                sh 'mvn package'
-            }
-        }
-        stage('building docker image'){
+        //stage('Code Analysis'){
+         //   steps{
+           //     withSonarQubeEnv('sonar8'){
+               //    sh 'mvn sonar:sonar'
+                //}
+          //  }
+     //   }
+      //  stage('ContinuousBuild')
+     //   {
+       //     steps
+         //   {
+          //      sh 'mvn package'
+        //    }
+        //}
+     /*   stage('building docker image'){
             steps{
                 script{
                         sh 'docker build -t riyansh16/maven:$BUILD_NUMBER .'
@@ -34,7 +34,7 @@ pipeline
                         }
                 }
             }
-        }
+        }*/
                 
                 
         
