@@ -17,13 +17,13 @@ pipeline
                 //}
           //  }
      //   }
-      //  stage('ContinuousBuild')
-     //   {
-       //     steps
-         //   {
-          //      sh 'mvn package'
-        //    }
-        //}
+       stage('ContinuousBuild')
+       {
+         steps
+            {
+               sh 'mvn package'
+            }
+        }
      /*   stage('building docker image'){
             steps{
                 script{
